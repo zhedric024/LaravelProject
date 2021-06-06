@@ -44,7 +44,7 @@
         @foreach($categories as $category)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $category->catname }}</td>
+            <td>{{ $category->catname }}</td> 
             <td>{{ $category->description }}</td>
             <td>      
                     <form action="{{ route('categories.destroy',$category->id) }}" method="POST">

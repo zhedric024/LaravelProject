@@ -5,22 +5,22 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
     public function index()
     {
        $products = Product::all();
-
-       return view('orders.index',compact('products'))
+       $orders = Order::all();
+       return view('orders.index',compact('products','orders'))
        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    public function create()
+    public function create(Product $product)
     {
-        $product = Product::all();
+        return view('orders.create', ['product' => $product]);
 
-        return view('orders.create', compact('product'));
     }
 
     public function store()

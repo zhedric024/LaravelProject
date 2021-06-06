@@ -15,6 +15,11 @@
     th{
         height:50px;
     }
+    .orders{
+        table-layout: auto; width: 100%;
+        margin-top: -320px;
+        margin-left: 650px;
+    }
       
     </style>
     </head>
@@ -30,6 +35,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
+        <div class="product">
             <table class="table table-bordered">
                 <tr>
                     <th>No</th>
@@ -55,10 +61,40 @@
                         </form>
                     </td>
                 </tr>
+           
 
                 @endforeach
             </table>
-            
+        </div>
+
+        <div class="orders">
+            <table class="table table-bordered">
+                <tr>
+                    <th>No</th>
+                    <th>Order Category</th>
+                    <th>Order Name</th>
+                    <th>Price</th>
+                    <th>Order</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+
+                @foreach($orders as $order)
+                <tr>
+                    <td>{{ ++$i }}</td>
+                    <td>{{ $order->ordercat }}</td>
+                    <td>{{ $order->orderprod }}</td>
+                    <td>{{ $order->price }}</td>
+                    <td>{{ $order->order }}</td>
+                    <td>{{ $order->total }}</td>
+                    <td>{{ $order->date }}</td>
+                </tr>
+           
+
+                @endforeach
+            </table>
+        </div>
+        
         </body>
         </html>
 @endsection

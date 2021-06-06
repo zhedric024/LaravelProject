@@ -14,11 +14,10 @@
 @endif
 <form method="POST" action="/orders">
             @csrf
-            @method('PUT')
             
             <div class="mb-4">
                 <br><label class="font-bold text-gray-800" for="catname">Order Category: </label>
-                <input class="h-10 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="ordercat" name="ordercat" value="{{ $product->prodcat }}" >
+                <input class="h-10 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="ordercat" name="ordercat" value="{{ $product->prodcat }}">
             </div>
            
             <div class="mb-4">
@@ -34,7 +33,7 @@
 
             <div class="mb-4">
                 <label class="font-bold text-gray-800" for="description">Order: </label>
-                <input class="h-16 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="qty" name="qty">
+                <input class="h-16 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="order" name="order">
             </div>
 
             <div class="mb-4">
@@ -44,7 +43,7 @@
 
             <div class="mb-4">
                 <label class="font-bold text-gray-800" for="description">Date: </label>
-                <input class="h-16 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="date" name="date">
+                <input type="date" id="date" name="date">
             </div>
 
             <button class="bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow">Create</button>
