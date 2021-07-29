@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Order;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,10 +18,20 @@ class ProductController extends Controller
        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+    public function show(Product $product)
+    {
+        return view('products.show',compact('product'));
+    }
+
     public function create()
     {
         $categories = Category::all(['id','catname']);
         return view('products.create',compact('categories'));
+    }
+
+    public function edit(Product $product)
+    {
+        return view('products.edit', ['product' => $product]);
     }
 
     public function store()
@@ -30,14 +39,12 @@ class ProductController extends Controller
         request()->validate([
             'prodcat' => 'required',
             'prodname' => 'required',
-            'price' => 'required',
             'qty' => 'required',
         ]);
 
         Product::create([
             'prodcat' => request('prodcat'),
             'prodname' => request('prodname'),
-            'price' => request('price'),
             'qty' => request('qty'),
         ]);
 
@@ -45,31 +52,17 @@ class ProductController extends Controller
                         ->with('success','Product created successfully.');
     }
 
-    public function show(Product $product)
-    {
-        return view('products.show',compact('product'));
-    }
-
-
-    public function edit(Product $product)
-    {
-        return view('products.edit', ['product' => $product]);
-
-    }
-
     public function update(Product $product)
     {
         request()->validate([
             'prodcat' => 'required',
             'prodname' => 'required',
-            'price' => 'required',
             'qty' => 'required',
         ]);
 
         $product->update([
             'prodcat' => request('prodcat'),
             'prodname' => request('prodname'),
-            'price' => request('price'),
             'qty' => request('qty'),
         ]);
 

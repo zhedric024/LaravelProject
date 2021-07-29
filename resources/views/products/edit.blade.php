@@ -28,11 +28,6 @@
             </div>
 
             <div class="mb-4">
-                <label class="font-bold text-gray-800" for="prodname">Price:</label>
-                <input class="h-10 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="price" name="price" value="{{ $product->price }}">
-            </div>
-
-            <div class="mb-4">
                 <label class="font-bold text-gray-800" for="description">Quantity: </label>
                 <input class="h-16 bg-white border border-gray-300 rounded py-4 px-3 mr-4 w-full text-gray-600 text-sm focus:outline-none focus:border-gray-400 focus:ring-0" id="qty" name="qty" value="{{ $product->qty }}">
             </div>

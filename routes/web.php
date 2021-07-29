@@ -11,8 +11,13 @@ Route::get('/', function () {
     return view('welcome'); 
     
 });
-
-Route::view("dashboard",'dashboard');
+Route::view("home",'home');
+Route::view("about",'about');
 Route::resource('/categories',CategoryController::class);
 Route::resource('/products',ProductController::class);
 Route::resource('/orders',OrderController::class);
+
+
+
+
+     

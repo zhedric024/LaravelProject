@@ -23,7 +23,7 @@
     </div>
 
     <div class="create2">
-        <a href="dashboard" class="bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow my-3">Back</a>
+        <a href="home" class="bg-blue-500 tracking-wide text-white px-6 py-2 inline-block mb-6 shadow-lg rounded hover:shadow my-3">Back</a>
     </div>
 
 
@@ -63,4 +63,5 @@
     </html>
         @endforeach
     </table>
+    
 @endsection

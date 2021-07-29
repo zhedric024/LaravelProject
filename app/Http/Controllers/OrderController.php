@@ -11,35 +11,35 @@ class OrderController extends Controller
 {
     public function index()
     {
-       $products = Product::all();
        $orders = Order::all();
-       return view('orders.index',compact('products','orders'))
+       return view('orders.index',compact('orders'))
        ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    public function create(Product $product)
+    public function create()
     {
-        return view('orders.create', ['product' => $product]);
+        $products = Product::all(['id','prodname']);
+        return view('orders.create',compact('products'));
+    }
 
+    public function edit(Order $order)
+    {
+        return view('orders.edit', ['order' => $order]);
     }
 
     public function store()
     {
         request()->validate([
-            'ordercat' => 'required',
             'orderprod' => 'required',
-            'price' => 'required',
-            'order' => 'required',
-            'total' => 'required',
+            'quantity' => 'required',
+            'ordername' => 'required',
             'date' => 'required',
         ]);
 
         Order::create([
-            'ordercat' => request('ordercat'),
             'orderprod' => request('orderprod'),
-            'price' => request('price'),
-            'order' => request('order'),
-            'total' => request('total'),
+            'quantity' => request('quantity'),
+            'ordername' => request('ordername'),
             'date' => request('date'),
         ]);
 
@@ -47,34 +47,19 @@ class OrderController extends Controller
                         ->with('success','Order created successfully.');
     }
 
-    public function show(Order $order)
-    {
-        return view('orders.show',compact('order'));
-    }
-
-    public function edit(Order $order)
-    {
-        return view('orders.edit', ['order' => $order]);
-
-    }
-
     public function update(Order $order)
     {
         request()->validate([
-            'ordercat' => 'required',
             'orderprod' => 'required',
-            'price' => 'required',
-            'order' => 'required',
-            'total' => 'required',
+            'quantity' => 'required',
+            'ordername' => 'required',
             'date' => 'required',
         ]);
 
         $order->update([
-            'ordercat' => request('ordercat'),
             'orderprod' => request('orderprod'),
-            'price' => request('price'),
-            'order' => request('order'),
-            'total' => request('total'),
+            'quantity' => request('quantity'),
+            'ordername' => request('ordername'),
             'date' => request('date'),
         ]);
 

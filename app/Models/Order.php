@@ -10,6 +10,6 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'ordercat', 'orderprod', 'price', 'order', 'total', 'date'
+        'orderprod', 'quantity', 'ordername', 'date'
       ];
 }
